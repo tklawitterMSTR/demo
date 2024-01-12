@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script
+      type="text/javascript"
+      src="https://tutorial.microstrategy.com/MicroStrategyLibrary/javascript/embeddinglib.js"></script>
+  </head>
+  <body onload="nativeChatbotDemoPage()">
+    <div id="container" style="position: absolute; top:0; left:0; bottom:0; right:0; height: 100%; width: 100%;">
+    </div>
+    <script type="text/javascript">
+      const nativeChatbotDemoPage = async () => {
+        try {
+          const embeddingContext = await microstrategy.embeddingContexts.embedBotConsumptionPage({
+            serverUrl: 'https://tutorial.microstrategy.com/MicroStrategyLibrary',
+            projectId: '9105B57627456A6AB4109C9D76E19764',
+            objectId: '55382DADB74408417765C6872916FA91',
+            customApplicationId: 'C2B2023642F6753A2EF159A75E0CFF29',
+            placeholder: document.getElementById('container'), 
+            customUi: {
+              botConsumption: {
+                snapshot: {
+                  // The value would be changed by "Hide my snapshots"
+                  enabled: true, 
+                }
+              }
+            }
+          });
+          embeddingContext.addCustomErrorHandler((err) => {
+            // The same function as "errorHandler" in initial properties
+          });
+        } catch(err) {
+          // The other error handling logic here
+        }
+      };
+    </script>
+  </body>
+</html>
